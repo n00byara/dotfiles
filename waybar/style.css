@@ -1,0 +1,9 @@
+@define-color bg_main rgba(25, 25, 25, 0.65);
+
+* {
+    
+}
+
+window#waybar {
+    background: transparent;
+}

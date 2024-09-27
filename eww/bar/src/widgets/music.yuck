@@ -1,0 +1,12 @@
+(defwidget music []
+    (button :class "music_box" ;; костыль для того, что бы меню не закрывалось при клике
+        :valign "start"
+        :halign "center"
+        :width 380
+        :height 200
+        (box :orientation "v"
+            (box :class ""
+                (button :onclick "" "text"))
+            (box :class ""
+                (button :onclick "" "text")))
+        ))

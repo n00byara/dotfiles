@@ -1,0 +1,36 @@
+scale trough {
+    all: unset;
+    margin: 0 15px 0 15px;
+    min-height: 15px;
+    min-width: 70px;
+  }
+
+.control_center_panel {
+    background-color: $background_black;
+}
+
+.controls_box {
+    margin: 20px;
+    background-color: $background_gray;
+    border-radius: 15px;
+}
+
+.control_slider_box {
+    margin: 20px;
+}
+
+.brightness_box {
+    background-color: $background_white;
+    border-radius: 10px;
+}
+
+.brightness_slider trough highlight {
+    background-color: white;
+    border-radius: 15px;
+}
+
+.info_box {
+    margin: 20px;
+    background-color: $background_gray;
+    border-radius: 15px;
+}

@@ -1,0 +1,25 @@
+.time {
+    margin: 0 4px 0 4px;
+}
+
+.control_center_box {
+    margin: 2px 0 2px 0;
+}
+
+.control_center_icon {
+    margin: 0 10px 0 10px;
+}
+
+.control_center_eventbox:hover {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+// .control_center_eventbox:active {
+//     border-radius: 4px;
+//     background-color: rgba(0, 0, 0, 0.2);
+// }
+
+.control_center_open_box {
+    background-color: white;
+}
