@@ -1,3 +1,10 @@
+(defpoll CPU :interval "1s"
+    :initial "0"
+    "$(pwd)/src/scripts/control_center.sh cpu")
+(defpoll RAM :interval "1s"
+    :initial "0"
+    "$(pwd)/src/scripts/control_center.sh ram")
+
 (defwidget control_center []
     (box :valign "start"
         :halign "end"
@@ -25,30 +32,90 @@
         :valign "start"
         :halign "start"
         :width 500
-        :height 500
-        (box :orientation "v"
-            (box :class ""
-                (button :onclick "" "text"))
-            (box :class ""
-                (button :onclick "" "text")))
-        ))
+        :height 300
+        :orientation "v"
+        (box :class "circle_widgets_box"
+            :orientation "v"
+            (box 
+                (box :class "ram_box"
+                :orientation "v"
+                (circular-progress :class "ram_circular"
+                    :width 26
+                    :thickness 10
+                    :start-at 25
+                    :value RAM)
+                    (image :class "ram_icon"
+                        :path "${images_path}/ram_light.svg"
+                        :valign "center"
+                        :image-width 50
+                        :image-height 50
+                        :icon "ram_icon"
+                        :icon-size ""))
+                (box :class "cpu_box"
+                    :orientation "v"
+                    (circular-progress :class "cpu_circular"
+                        :width 26
+                        :thickness 10
+                        :start-at 25
+                        :value CPU)
+                    (image :class "ram_icon"
+                        :path "${images_path}/cpu_light.svg"
+                        :valign "center"
+                        :image-width 50
+                        :image-height 50
+                        :icon "ram_icon"
+                        :icon-size "")))
+        )
+    )
+)
+
+(defwidget controls_buttons []
+    (box :orientation "h"
+            (button :class "control_btn"
+                ;:onclick "reboot"
+                (image :class "restart_button_icon"
+                    :path "${images_path}/power.svg"
+                    :valign "center"
+                    :image-width 30
+                    :image-height 30
+                    :icon "control_center_icon"
+                    :icon-size ""))
+            (button :class "control_btn"
+                ;:onclick "reboot"
+                (image :class "restart_button_icon"
+                    :path "${images_path}/restart.svg"
+                    :valign "center"
+                    :image-width 30
+                    :image-height 30
+                    :icon "control_center_icon"
+                    :icon-size ""))
+            (button :class "control_btn"
+                ;:onclick "reboot"
+                (image :class "logout_button_icon"
+                    :path "${images_path}/logout.svg"
+                    :valign "center"
+                    :image-width 30
+                    :image-height 30
+                    :icon "control_center_icon"
+                    :icon-size ""))
+            (button :class "control_btn"
+                ;:onclick "reboot"
+                :style "background-color: rgba(255, 255, 255, 0.5);"
+                (image :class "logout_button_icon"
+                    :path "${images_path}/bluetooth_disabled.svg"
+                    :valign "center"
+                    :image-width 30
+                    :image-height 30
+                    :icon "control_center_icon"
+                    :icon-size ""))))
 
 (defwidget controls []
     (button :class "controls_box" ;; костыль для того, что бы меню не закрывалось при клике
         :valign "start"
         :halign "end"
         :width 380
-        :height 380
-        (box :orientation "v"
-            (box :class "control_slider_box"
-            (brightness))
-            (box :class "control_slider_box"
-                "text")
-            (box :class ""
-                (button :onclick "" "text"))
-            (box :class ""
-                (button :onclick "" "text")))        
-        )) ; 
+        :height 110
+        (controls_buttons)))
 
 (defwidget brightness []
     (box :class "brightness_box"
@@ -68,5 +135,5 @@
                     :width "100%"
                     :height "1056"
                     :anchor "top center")
-  :reserve (struts :side "top" :distance "0%")
-  (control_center))
+    :reserve (struts :side "top" :distance "0%")
+    (control_center))

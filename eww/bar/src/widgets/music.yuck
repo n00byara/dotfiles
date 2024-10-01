@@ -1,12 +1,117 @@
+(deflisten title :initial ""
+    "playerctl --follow metadata --format '{{ title }}' || true")
+(deflisten artist :initial ""
+    "playerctl --follow metadata --format '{{ artist }}' || true")
+
+(defpoll music_image :interval "0.3s"
+    :initial ""
+    "$(pwd)/src/scripts/music.sh music_image")
+(defpoll play_pause :interval "0.3s"
+    :initial ""
+    "$(pwd)/src/scripts/music.sh play_pause_icon")
+(defpoll volume :interval "0.3s"
+    :initial ""
+    "echo $(amixer -D pulse sget Master | awk -F '[^0-9]+' '/Left:/{print $3}')")
+(defpoll music_position :interval "0.3s"
+    :initial ""
+    "playerctl position --format '{{ duration(position) }}'")
+(defpoll music_length :interval "0.3s"
+    :initial ""
+    "playerctl metadata --format '{{ duration(mpris:length) }}'")
+(defpoll position :interval "0.3s"
+    :initial ""
+    "playerctl metadata --format '{{ position }}'")
+(defpoll length :interval "0.1s"
+    :initial ""
+    "playerctl metadata --format '{{ mpris:length }}'")
+(defpoll volume_icon :interval "0.1s"
+    :initial ""
+    "$(pwd)/src/scripts/music.sh get_volume")
+
+(defwidget player_buttons []
+    (box :orientation "v"
+        (box :space-evenly false
+            :halign "center"
+            music_position
+                (box :class "music_progress_bar"
+                    :orientation "h"
+                    :space-evenly "false"
+                    :vexpand false
+                    :hexpand false
+                    :halign "center"
+                    (scale :orientation "h"
+                        :min 0 :max length
+                        :value position
+                        :active "true"
+                        :onchange "$(pwd)/src/scripts/music.sh set_volume {}"
+                        :width 200 ))
+            music_length)
+        (box :class "player_buttons_box"
+            :orientation "h"
+            :halign "center"
+            :spacing 15
+            :space-evenly false
+        (button :onclick "sh ${eww_path}/src/scripts/music.sh previous"
+            (image :class ""
+                :path "${images_path}/previous.svg"
+                :valign "center"
+                :image-width 25
+                :image-height 25
+                :icon "control_center_icon"
+                :icon-size ""))
+        (button :onclick "sh ${eww_path}/src/scripts/music.sh play_pause"
+            (image :class ""
+                :path "${play_pause}"
+                :valign "center"
+                :image-width 40
+                :image-height 40
+                :icon "play_pause_icon"
+                :icon-size ""))
+        (button :onclick "sh ${eww_path}/src/scripts/music.sh next"
+            (image :class ""
+                :path "${images_path}/next.svg"
+                :valign "center"
+                :image-width 25
+                :image-height 25
+                :icon "control_center_icon"
+                :icon-size "")))
+        (box :class "volume_progress_bar"
+            :orientation "h"
+            :space-evenly false
+            :vexpand false
+            :hexpand false
+            :halign "center"
+            (image :class ""
+                :path volume_icon
+                :image-width 25
+                :image-height 25
+                :icon "control_center_icon"
+                :icon-size "")
+            (scale :orientation "h"
+                :width 200
+                :min 0 :max 100
+                :value volume
+                :active true
+                :onchange "amixer -D pulse sset Master {}%" ))))
+    
+
 (defwidget music []
-    (button :class "music_box" ;; костыль для того, что бы меню не закрывалось при клике
+    (box :class "music_box"
         :valign "start"
         :halign "center"
-        :width 380
-        :height 200
-        (box :orientation "v"
-            (box :class ""
-                (button :onclick "" "text"))
-            (box :class ""
-                (button :onclick "" "text")))
-        ))
+        :width 360
+        :height 480
+        (box :class "music_player_box" :orientation "v"
+            (box
+                :orientation "v"
+                :space-evenly false
+                (button :class "music_image"
+                    :halign "center"
+                    :valign "center"
+                    :style "background-image: url('${music_image}')"
+                    :icon-size "")
+                (button :class "music_title"
+                    title)
+                (button :class "music_artist"
+                    artist)
+                (player_buttons)))))

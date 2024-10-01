@@ -3,7 +3,7 @@
 (deflisten control_center_path :initial ""
 		"echo $(dirname $(pwd))/control_center")
 (deflisten images_path :initial ""
-		"echo $(pwd)/src/images/")
+		"echo $(pwd)/src/icons/")
 (deflisten widgets_path :initial "" 
 		"echo $(pwd)/src/widgets/")
 
@@ -16,18 +16,19 @@
 				:class "right"
 		(control_center_button)
 		(time)))
-;  && ${eww}/src/scripts/control_center.sh ${control_center_is_open}
+
 (defwidget control_center_button []
 		(box :class "control_center_box"
 				(eventbox :class "control_center_eventbox"
 						:onclick "eww -c ${eww_path} update control_center_is_open=${!control_center_is_open} && sh ${eww_path}/src/scripts/control_center.sh ${control_center_is_open}"
 						(image :class "control_center_icon"
-								:path "${images_path}/control_center_light.svg"
+								:path "${images_path}/toggle_on.svg"
 								:valign "center"
-								:image-width 16
-								:image-height 16
+								:image-width 20
+								:image-height 20
 								:icon "control_center_icon"
 								:icon-size ""))))
+
 (defwidget time []
 		(box	:orientation "h"
 				:space-evenly false

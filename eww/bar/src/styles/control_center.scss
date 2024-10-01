@@ -10,9 +10,9 @@ scale trough {
 }
 
 .controls_box {
-    margin: 20px;
+    margin: 25px;
     background-color: $background_gray;
-    border-radius: 15px;
+    border-radius: 17px;
 }
 
 .control_slider_box {
@@ -32,5 +32,39 @@ scale trough {
 .info_box {
     margin: 20px;
     background-color: $background_gray;
-    border-radius: 15px;
+    border-radius: 25px;
+}
+
+.circle_widgets_box {    
+    margin: 20px;
+}
+
+.ram_box {
+    padding: 25px 0 0 0;
+    margin: 10px;
+    background-color: $background_white;
+    border-radius: 25px;
+}
+
+.ram_circular {
+    color: #f197b5;
+    background-color: #774f5c;
+}
+
+.cpu_circular {
+    color: #327ec0;
+    background-color: #183C5C;
+}
+
+.cpu_box {
+    padding: 25px 0 0 0;
+    margin: 10px;
+    background-color: $background_white;
+    border-radius: 25px;
+}
+
+.control_btn {
+    margin: 10px 20px 10px 20px;
+    background-color: #327ec0;
+    border-radius: 50%;
 }
