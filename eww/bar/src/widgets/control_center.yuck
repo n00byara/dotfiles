@@ -15,56 +15,56 @@
 
 (defwidget control_center_full_screen []
     (overlay
-        (box :valign "start" :class "box"
-            :halign "end"
-            :height 1080
+        (box :height 1080
             :width 1920 "")
         (control_center_panel)))
 
 (defwidget control_center_panel []
-    (centerbox :class "control_center_panel"
-        (info)
+        (box :class "control_center_panel"
+        :space-evenly false
+        :orientation "v"
+        :halign "end"
+        (controls)
         (music)
-        (controls)))
+        (info)))
 
 (defwidget info []
     (button :class "info_box" ;; костыль для того, что бы меню не закрывалось при клике
-        :valign "start"
-        :halign "start"
-        :width 500
+        :halign "end"
+        :width 380
         :height 300
         :orientation "v"
         (box :class "circle_widgets_box"
             :orientation "v"
-            (box 
+            (box :orientation "v"
                 (box :class "ram_box"
-                :orientation "v"
-                (circular-progress :class "ram_circular"
-                    :width 26
-                    :thickness 10
-                    :start-at 25
-                    :value RAM)
-                    (image :class "ram_icon"
+                :orientation "h"
+                (image :class "ram_icon"
                         :path "${images_path}/ram_light.svg"
                         :valign "center"
                         :image-width 50
                         :image-height 50
                         :icon "ram_icon"
-                        :icon-size ""))
+                        :icon-size "")
+                (circular-progress :class "ram_circular"
+                    :width 26
+                    :thickness 10
+                    :start-at 25
+                    :value RAM))
                 (box :class "cpu_box"
-                    :orientation "v"
-                    (circular-progress :class "cpu_circular"
-                        :width 26
-                        :thickness 10
-                        :start-at 25
-                        :value CPU)
+                    :orientation "h"
                     (image :class "ram_icon"
                         :path "${images_path}/cpu_light.svg"
                         :valign "center"
                         :image-width 50
                         :image-height 50
                         :icon "ram_icon"
-                        :icon-size "")))
+                        :icon-size "")
+                    (circular-progress :class "cpu_circular"
+                        :width 26
+                        :thickness 10
+                        :start-at 25
+                        :value CPU)))
         )
     )
 )
@@ -100,7 +100,7 @@
                     :icon-size ""))
             (button :class "control_btn"
                 ;:onclick "reboot"
-                :style "background-color: rgba(255, 255, 255, 0.5);"
+                :style "background-color: rgba();"
                 (image :class "logout_button_icon"
                     :path "${images_path}/bluetooth_disabled.svg"
                     :valign "center"
@@ -111,10 +111,8 @@
 
 (defwidget controls []
     (button :class "controls_box" ;; костыль для того, что бы меню не закрывалось при клике
-        :valign "start"
         :halign "end"
         :width 380
-        :height 110
         (controls_buttons)))
 
 (defwidget brightness []

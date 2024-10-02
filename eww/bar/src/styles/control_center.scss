@@ -5,14 +5,10 @@ scale trough {
     min-width: 70px;
   }
 
-.control_center_panel {
-    background-color: $background_black;
-}
-
 .controls_box {
-    margin: 25px;
+    margin: 10px 25px 0 25px;
     background-color: $background_gray;
-    border-radius: 17px;
+    border-radius: 22px;
 }
 
 .control_slider_box {
@@ -40,7 +36,7 @@ scale trough {
 }
 
 .ram_box {
-    padding: 25px 0 0 0;
+    padding: 10px 0 10px 0;
     margin: 10px;
     background-color: $background_white;
     border-radius: 25px;
@@ -57,14 +53,17 @@ scale trough {
 }
 
 .cpu_box {
-    padding: 25px 0 0 0;
+    padding: 20px 0 0px 0;
     margin: 10px;
     background-color: $background_white;
     border-radius: 25px;
 }
 
 .control_btn {
-    margin: 10px 20px 10px 20px;
+    margin: 20px 10px 20px 10px;
     background-color: #327ec0;
     border-radius: 50%;
+}
+.restart_button_icon {
+    margin: 15px;
 }

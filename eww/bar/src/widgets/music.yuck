@@ -93,14 +93,9 @@
                 :value volume
                 :active true
                 :onchange "amixer -D pulse sset Master {}%" ))))
-    
 
 (defwidget music []
     (box :class "music_box"
-        :valign "start"
-        :halign "center"
-        :width 360
-        :height 480
         (box :class "music_player_box" :orientation "v"
             (box
                 :orientation "v"

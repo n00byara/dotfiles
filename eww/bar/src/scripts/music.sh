@@ -65,6 +65,17 @@ set_volume () {
     fi
 }
 
+get_music_status () {
+     case `$(playerctl status)` in
+        "No players found")
+            echo 0
+        ;;
+        *)
+            echo 1
+        ;;
+    esac
+}
+
 case "$1" in
     "play_pause_icon")
         get_play_pause_icon
@@ -86,6 +97,9 @@ case "$1" in
     ;;
     "get_volume")
         get_volume_icon
+    ;;
+    "status")
+        get_music_status
     ;;
 esac
 

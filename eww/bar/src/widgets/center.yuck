@@ -1,5 +1,22 @@
-(deflisten music :initial ""
-    "" )
+(defpoll music_status :interval "0.3s"
+    :initial ""
+    "$(pwd)/src/scripts/music.sh status")
 
 (defwidget center[]
-    music)
+    (revealer :transition "crossfade"
+        :reveal "${control_center_is_open && music_status}"
+        :duration 500
+        (button
+            (box :orientation "h"
+                :space-evenly false
+                (box
+                    (image :class ""
+                        :path "${images_path}/music_note.svg"
+                        :valign "center"
+                        :image-width 18
+                        :image-height 18
+                        :icon "control_center_icon"
+                        :icon-size ""))
+            (box :class "title" title)
+            (box :class "separator" "-")
+            (box :class "artist" artist)))))
