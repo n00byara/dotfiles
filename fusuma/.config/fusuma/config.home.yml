@@ -1,0 +1,35 @@
+swipe:
+  3:
+    left:
+      command: "playerctl next"
+    right:
+      command: "playerctl previous"
+    up:
+      command: "wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%+"
+    down:
+      command: "wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%-"
+  4:
+    left:
+      command: "hyprctl dispatch workspace r+1"
+    right:
+      command: "hyprctl dispatch workspace r-1"
+    up:
+      command: "hyprctl dispatch fullscreen toggle"
+    down:
+      command: "hyprctl dispatch killactive"
+
+hold:
+  3:
+    command: "playerctl play-pause"
+  4:
+    command: "~/.config/fusuma/switch-fusuma-profile.sh"
+
+threshold:
+  swipe: 0.5
+  pinch: 0.4
+  hold: 0.7
+
+interval:
+  swipe: 0.8
+  pinch: 1.0
+  hold: 0.1
