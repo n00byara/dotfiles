@@ -1,0 +1,53 @@
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 16px;
+    font-family: "iosevka nerd font";
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0;
+    color: beige;
+}
+
+window#waybar {
+    border-radius: 11px;
+    background: rgba(165, 165, 165, 0.274);
+}
+
+#mpris,
+#clock,
+#tray,
+#memory,
+#pulseaudio {
+    border: 1px;
+    border-radius: 7px;
+    background-color: rgba(165, 165, 165, 0.199);
+    margin: 6px 6px 6px 0px;
+    padding: 2px 8px;
+    border: 1px solid rgba(165, 165, 165, 0.2);
+}
+
+#workspaces {
+    background-color: rgba(165, 165, 165, 0.199);
+    margin: 6px 0px 6px 6px;
+    border: 1px solid rgba(165, 165, 165, 0.2);
+    border-radius: 7px;
+}
+
+#workspaces button {
+    all: initial;
+    margin: 2px;
+    padding: 5px 10px;
+    min-width: 0;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+    background-color: rgba(165, 165, 165, 0.2);
+    border-radius: 7px;
+}
+
+#tray {
+    background-color: rgba(165, 165, 165, 0.274);
+}
+
+#workspaces button.active {
+    background: rgba(165, 165, 165, 0.5);
+}

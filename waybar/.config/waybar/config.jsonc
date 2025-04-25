@@ -1,0 +1,73 @@
+{
+    "layer": "top",
+    "spacing": 0,
+    "height": 0,
+
+    "margin-top": 10,
+    "margin-right": 10,
+    "margin-bottom": 0,
+    "margin-left": 10,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "mpris"
+    ],
+
+    "modules-right": [
+        "tray",
+        "memory",
+        "pulseaudio",
+        "clock"
+    ],
+
+    "hyprland/workspaces": {
+        "spacing": 10,
+        "persistent-workspaces": {
+            "*" : 8
+        }
+    },
+
+    "mpris": {
+        "format": "♬ {artist} - {title}",
+        "player-icons": {
+            "spotify": "",
+            "default": "🎵"
+        },
+        "tooltip-format": "{status} - {album}",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%I:%M}",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "RAM {percentage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 80
+        }
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "max-volume": 150,
+        "format": "vol {volume}%",
+        "format-bluetooth": "vol {volume}%",
+        "nospacing": 1,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    }
+}
